@@ -1,0 +1,1 @@
+print("ambiente pronto")
