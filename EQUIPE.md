@@ -4,3 +4,4 @@
 ## Alunos
 - Glaucio Ferreira
 - Narciso Gomes
+- Michel Metz - Github: Metz94
