@@ -4,4 +4,5 @@
 ## Alunos
 - Glaucio Ferreira
 - Narciso Gomes
-- Michel Metz - Github: Metz94 - Meu programa é o jokenpo
+- Marcio Gibrair macedo Rosa
+- Michel Metz - Github: Metz94 - Meu programa é o jogo do Pedra, Papel e Tesoura
