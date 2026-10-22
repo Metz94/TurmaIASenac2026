@@ -3,7 +3,7 @@ TIPOS = ('notebook', 'tablet', 'kit arduino', 'fone')
 
 equipamentos = [
     {'codigo': '', 'tipo': 'notebook', 'disponivel': True, 'com': '', 'emprestimos': 0},
-    {'codigo': '', 'tipo': 'notebook', 'disponivel': True, 'com': 'Ana', 'emprestimos': 0},
+    {'codigo': '', 'tipo': 'notebook', 'disponivel': True, 'com': '', 'emprestimos': 0},
     {'codigo': '', 'tipo': 'tablet', 'disponivel': True, 'com': '', 'emprestimos': 0},
     {'codigo': '', 'tipo': 'kit arduino', 'disponivel': True, 'com': '', 'emprestimos': 0},
     {'codigo': '', 'tipo': 'fone', 'disponivel': True, 'com': '', 'emprestimos': 0},
