@@ -1,7 +1,7 @@
 TIPOS = ("carro", "moto")
 VAGAS = {"carro": 5, "moto": 3}
 PRECO_HORA = {"carro": 6.00, "moto": 3.50}
-MENSALISTAS = ("ABC1D23", "MOT0R99")
+MENSALISTAS = {"ABC1D23", "MOT0R99"}
 patio = [
  {"placa": "QWE4R56", "tipo": "carro", "entrada": 8},
  {"placa": "MOT0R99", "tipo": "moto", "entrada": 9},
@@ -76,11 +76,7 @@ def cadastrar_entrada():
         VAGAS['moto'] -=1
 
 
-    novo = {
-        "placa": placa,
-        "tipo": tipo,
-        "entrada": hora_entrada      
-    }
+    novo = {"placa": placa,"tipo": tipo,"entrada": hora_entrada}
 
 
     patio.append(novo)
@@ -190,6 +186,7 @@ def vagas():
     '''Mostra quantas vagas livres há para carros e para motos.'''
 
     print(f"\n{VAGAS['carro']} vagas livres para carros\n{VAGAS['moto']} vagas livres para motos.")
+    
 
 
 
@@ -250,6 +247,50 @@ def cancelamento():
 
 
 
+def cadastrar_mensalista():
+    '''Cadastra um novo mensalista'''
+    print("\nAdicionar Mensalista\n")
+    while True:
+            try:
+                placa = input("Placa: ").upper()
+                if not placa:
+                    print("A placa não pode estar em branco")
+                elif placa in MENSALISTAS:
+                    print("Esta placa já foi cadastrada como mensalista")
+                    return
+                else:
+                    MENSALISTAS.add(placa)
+                    print(f"A placa {placa} foi cadastrada como mensalista")
+                    break
+            except Exception:
+                print(f"\nOcorreu um erro inesperado")
+
+
+def remover_mensalista():
+    while True:
+        try:
+            placa_remover = input("Placa do mensalista a ser removido: ").upper()
+            if not placa_remover:
+                print("A placa não pode estar em branco")
+            elif placa_remover not in MENSALISTAS:
+                print("Está placa não está cadastrada como mensalista")
+                return
+            else:
+                MENSALISTAS.remove(placa_remover)
+                print(f"A placa {placa_remover} foi removida com sucesso")
+                break
+        except Exception:
+            print(f"\nOcorreu um erro inesperado")
+
+     
+def listar_mensalista():
+    for numero, placa in enumerate(MENSALISTAS, start=1): #enumerate entrega primeiro o índice e depois o item "for indice,item in enumerate"; start = 1 evita começar do zero
+        print(f"  {numero}. Placa: {placa}")
+   
+
+
+
+
 while True:
     try:
         print("\n╔═════════════════════════════════════════════════╗")
@@ -268,6 +309,8 @@ while True:
         print("║ 6 - Relatório                                   ║")
         print("╠═════════════════════════════════════════════════╣")
         print("║ 7 - Cancelamento                                ║")
+        print("╠═════════════════════════════════════════════════╣")
+        print("║ 8 - Mensalistas - Mais opções                   ║")
         print("╠═════════════════════════════════════════════════╣")
         print("║ 0 - Sair                                        ║")
         print("╚═════════════════════════════════════════════════╝")
@@ -289,6 +332,42 @@ while True:
                 exibir_relatorio()
             case '7':
                 cancelamento()
+            case '8':
+                while True:
+                    try:
+                        print("\n╔═════════════════════════════════════════════════╗")
+                        print("║ 1 - Cadastrar Mensalista                        ║")
+                        print("╠═════════════════════════════════════════════════╣")
+                        print("║ 2 - Remover Mensalista                          ║")
+                        print("╠═════════════════════════════════════════════════╣")
+                        print("║ 3 - Listar Mensalistas                          ║")
+                        print("╠═════════════════════════════════════════════════╣")
+                        print("║ 0 - Sair                                        ║")
+                        print("╚═════════════════════════════════════════════════╝")
+                        opcao = input("Opção: ").strip()
+                                
+                        match opcao:
+                            case '1':
+                                cadastrar_mensalista()
+                            case '2':
+                                remover_mensalista()
+                            case '3':
+                                listar_mensalista()
+                            case '0':
+                                    print("\nEncerrando opções de mensalistas!")
+                                    break
+                            case _:
+                                    print("\nOpção inválida! Digite um número do menu.")
+                                        
+                        print("\n" + "-" * 80)
+                        input("Pressione ENTER para continuar...")
+                                
+                    except Exception as erro:
+                        print(f"\nOcorreu um erro inesperado: {erro}")
+            case '9':
+                remover_mensalista()
+            case '10':
+                listar_mensalista()
             case '0':
                 print("\nEncerrando o programa. Até logo!")
                 break
