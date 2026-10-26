@@ -38,11 +38,15 @@ def cadastrar_entrada():
             print(f"\nOcorreu um erro inesperado")
 
 
+
     for vc in patio:
         if vc['placa'] == placa:
             print("Este veiculo já está estacionado")
             return
+
+        
     tipo = input("Tipo: ").lower()
+
     
     mapa_tipos = {
             "carro": "carro",
@@ -62,12 +66,15 @@ def cadastrar_entrada():
         print("\n Erro: Tipo inválido! Deve ser um carro ou uma moto.")
         return
 
+
     hora_entrada = int(input("Hora da entrada: "))
+
     
     if tipo == 'carro':
         VAGAS['carro'] -=1
     if tipo == 'moto':
         VAGAS['moto'] -=1
+
 
     novo = {
         "placa": placa,
@@ -75,7 +82,9 @@ def cadastrar_entrada():
         "entrada": hora_entrada      
     }
 
+
     patio.append(novo)
+
 
 
 def saida():
@@ -94,10 +103,12 @@ def saida():
     
     veiculo_encontrado = None
 
+
     for vc in patio:
         if vc["placa"] == placa_remover:
             veiculo_encontrado = vc
             break
+
 
     if not veiculo_encontrado:
         print("\nErro: Veículo não encontrado no pátio!")
@@ -117,11 +128,12 @@ def saida():
     
     horas_estacionado = hora_saida - veiculo_encontrado["entrada"]
 
+
     if horas_estacionado <=1:
         horas_estacionado +=1
 
-    tipo_veiculo = veiculo_encontrado["tipo"]
 
+    tipo_veiculo = veiculo_encontrado["tipo"]
 
     
     if placa_remover in MENSALISTAS:
@@ -133,10 +145,8 @@ def saida():
         status_mensalista = 'NÃO'
 
 
-
     print(f"\nTempo total: {horas_estacionado}h")
     print(f"Valor a pagar: R$ {valor_pago:.2f}")
-
 
         
     patio.remove(veiculo_encontrado)
@@ -149,18 +159,20 @@ def saida():
 
 
 
-
 def consultar():
     '''Mostra os dados de um veículo do pátio a partir da placa e diz se é mensalista.'''
 
     buscar_placa = input("Consultar Placa: ").upper()
 
+
     veiculo_encontrado = None
+
 
     for vc in patio:
         if vc["placa"] == buscar_placa:
             veiculo_encontrado = vc
             break
+
 
     if veiculo_encontrado:
         if buscar_placa in MENSALISTAS:
@@ -173,10 +185,12 @@ def consultar():
         print(f"O veiculo com a placa {buscar_placa} não está no patio")       
 
 
+
 def vagas():
     '''Mostra quantas vagas livres há para carros e para motos.'''
 
     print(f"\n{VAGAS['carro']} vagas livres para carros\n{VAGAS['moto']} vagas livres para motos.")
+
 
 
 def incremento_relatorio(status_mensalista, valor_pago):
@@ -185,7 +199,9 @@ def incremento_relatorio(status_mensalista, valor_pago):
     if status_mensalista == 'SIM':
         saida_mensalista +=1
 
+
     faturamento_do_dia += valor_pago
+
 
     if maior_valor_cobrado < valor_pago:
         maior_valor_cobrado = valor_pago
@@ -218,6 +234,7 @@ def cancelamento():
     
     veiculo_encontrado = None
 
+
     for vc in patio:
         if vc["placa"] == placa_remover:
             veiculo_encontrado = vc
@@ -226,10 +243,10 @@ def cancelamento():
             VAGAS[veiculo_encontrado["tipo"]] += 1
             break
 
+
     if not veiculo_encontrado:
         print("\nErro: Veículo não encontrado no pátio!")
         return
-
 
 
 
