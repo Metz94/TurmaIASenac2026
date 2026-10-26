@@ -168,7 +168,7 @@ def consultar():
         else:
             status_mensalista = "NÃO"
 
-        print(f"Placa: {veiculo_encontrado['placa']}\nTipo: {veiculo_encontrado['tipo']}\nHora entrada: {veiculo_encontrado["entrada"]}\nMensalista: {status_mensalista}")
+        print(f"Placa: {veiculo_encontrado['placa']}\nTipo: {veiculo_encontrado['tipo']}\nHora entrada: {veiculo_encontrado['entrada']}\nMensalista: {status_mensalista}")
     else:
         print(f"O veiculo com a placa {buscar_placa} não está no patio")       
 
@@ -176,7 +176,7 @@ def consultar():
 def vagas():
     '''Mostra quantas vagas livres há para carros e para motos.'''
 
-    print(f"\n{VAGAS["carro"]} vagas livres para carros\n{VAGAS['moto']} vagas livres para motos.")
+    print(f"\n{VAGAS['carro']} vagas livres para carros\n{VAGAS['moto']} vagas livres para motos.")
 
 
 def incremento_relatorio(status_mensalista, valor_pago):
@@ -223,6 +223,7 @@ def cancelamento():
             veiculo_encontrado = vc
             patio.remove(veiculo_encontrado)
             print(f"Foi cancelado o estacionamento do veiculo placa {placa_remover}")
+            VAGAS[veiculo_encontrado["tipo"]] += 1
             break
 
     if not veiculo_encontrado:
