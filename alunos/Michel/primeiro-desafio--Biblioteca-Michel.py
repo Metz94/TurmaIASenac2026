@@ -17,7 +17,7 @@ def carregar_dados():
         with open(ARQUIVO_JSON, "r", encoding="utf-8") as arq: #with fecha o arquivo após a leitura para evitar memory leak, r é read, utf-8 codificação do nosso idioma para entender ç e acentos
             return json.load(arq) #load carrega os dados do arquivo, pull
     except FileNotFoundError:
-        return equipamentos
+        return equipamentos #se não encontrar o arquivo, carrega a template padrão
 
 def salvar_dados():
     """Salva a lista atual de equipamentos no arquivo JSON."""
