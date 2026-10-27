@@ -284,7 +284,7 @@ def remover_mensalista():
 
      
 def listar_mensalista():
-    for numero, placa in enumerate(MENSALISTAS, start=1): #enumerate entrega primeiro o índice e depois o item "for indice,item in enumerate"; start = 1 evita começar do zero
+    for numero, placa in enumerate(MENSALISTAS, start=1): #enumerate entrega primeiro o índice e depois o item "for indice,item in ..."; start = 1 evita começar do zero
         print(f"  {numero}. Placa: {placa}")
    
 
