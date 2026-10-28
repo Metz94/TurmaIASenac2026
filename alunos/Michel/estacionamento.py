@@ -38,7 +38,6 @@ def cadastrar_entrada():
             print(f"\nOcorreu um erro inesperado")
 
 
-
     for vc in patio:
         if vc['placa'] == placa:
             print("Este veiculo já está estacionado")
@@ -126,7 +125,7 @@ def saida():
 
 
     if horas_estacionado <=1:
-        horas_estacionado +=1
+        horas_estacionado =1
 
 
     tipo_veiculo = veiculo_encontrado["tipo"]
@@ -314,8 +313,10 @@ while True:
         print("╠═════════════════════════════════════════════════╣")
         print("║ 0 - Sair                                        ║")
         print("╚═════════════════════════════════════════════════╝")
+
         
         opcao = input("Opção: ").strip()
+
         
         match opcao:
             case '1':
@@ -345,7 +346,8 @@ while True:
                         print("║ 0 - Sair                                        ║")
                         print("╚═════════════════════════════════════════════════╝")
                         opcao = input("Opção: ").strip()
-                                
+
+
                         match opcao:
                             case '1':
                                 cadastrar_mensalista()
@@ -358,24 +360,26 @@ while True:
                                     break
                             case _:
                                     print("\nOpção inválida! Digite um número do menu.")
-                                        
+
+
                         print("\n" + "-" * 80)
                         input("Pressione ENTER para continuar...")
-                                
+
+
                     except Exception as erro:
                         print(f"\nOcorreu um erro inesperado: {erro}")
-            case '9':
-                remover_mensalista()
-            case '10':
-                listar_mensalista()
+
+
             case '0':
                 print("\nEncerrando o programa. Até logo!")
                 break
             case _:
                 print("\nOpção inválida! Digite um número do menu.")
+
                 
         print("\n" + "-" * 80)
         input("Pressione ENTER para continuar...")
+
         
     except Exception as erro:
         print(f"\nOcorreu um erro inesperado: {erro}")
