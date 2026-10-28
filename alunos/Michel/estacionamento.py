@@ -265,6 +265,7 @@ def cadastrar_mensalista():
                 print(f"\nOcorreu um erro inesperado")
 
 
+
 def remover_mensalista():
     while True:
         try:
