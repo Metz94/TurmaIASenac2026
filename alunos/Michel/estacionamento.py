@@ -14,6 +14,7 @@ saida_mensalista = 0
 faturamento_do_dia = 0
 maior_valor_cobrado = 0
 
+
 def listar():
     '''Mostra os veículos estacionados, com placa, tipo e hora de entrada.'''
     
