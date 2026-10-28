@@ -3,9 +3,9 @@ VAGAS = {"carro": 5, "moto": 3}
 PRECO_HORA = {"carro": 6.00, "moto": 3.50}
 MENSALISTAS = {"ABC1D23", "MOT0R99"}
 patio = [
- {"placa": "QWE4R56", "tipo": "carro", "entrada": 8},
- {"placa": "MOT0R99", "tipo": "moto", "entrada": 9},
- {"placa": "ZXC7V89", "tipo": "carro", "entrada": 10},
+ {"placa": "QWE4R56", "tipo": "carro", "entrada": "8:00"},
+ {"placa": "MOT0R99", "tipo": "moto", "entrada": "9:00"},
+ {"placa": "ZXC7V89", "tipo": "carro", "entrada": "10:00"},
 ]
 
 
@@ -13,6 +13,17 @@ saida_relatorio = 0
 saida_mensalista = 0
 faturamento_do_dia = 0
 maior_valor_cobrado = 0
+
+
+
+def converter_hora(hora):
+    horas, minutos = map(int, hora.split(":")) #map aplica uma função a todos os itens, no caso, transforma tudo em inteiro e faz o split usando o : como separador
+
+    if not (0 <= horas <= 23 and 0 <= minutos <= 59):
+        raise ValueError("Horário inválido")
+
+    return horas + minutos / 60
+
 
 
 def listar():
@@ -67,7 +78,13 @@ def cadastrar_entrada():
         return
 
 
-    hora_entrada = int(input("Hora da entrada: "))
+    while True:
+        try:
+            hora_entrada = input("Hora da entrada (HH:MM): ")
+            hora_entrada = converter_hora(hora_entrada)
+            break
+        except ValueError:
+                print("Horário inválido! Digite no formato HH:MM, por exemplo 10:30.")
 
     
     if tipo == 'carro':
@@ -113,16 +130,19 @@ def saida():
             
     while True:
         try:
-            hora_saida = float(input("Hora de saida: ")) 
-            if hora_saida <0 or hora_saida >23:
-                print("Hora invalida, digite novamente")
-            else:
-                break
-        except ValueError:
-            print("Por favor, digite apenas números inteiros.")
+            hora_saida = input("Hora de saída (HH:MM): ")
+            hora_saida = converter_hora(hora_saida)
 
-    
-    horas_estacionado = hora_saida - veiculo_encontrado["entrada"]
+            horas_estacionado = (hora_saida - veiculo_encontrado["entrada"])
+
+            if horas_estacionado < 0:
+                print("A hora de saída não pode ser anterior à entrada.")
+                continue
+            break
+
+
+        except ValueError:
+            print("Horário inválido! Digite no formato HH:MM, por exemplo 10:30.")
 
 
     if horas_estacionado <=1:
