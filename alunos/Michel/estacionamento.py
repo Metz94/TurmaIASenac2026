@@ -17,7 +17,7 @@ maior_valor_cobrado = 0
 
 
 def converter_hora(hora):
-    horas, minutos = map(int, hora.split(":")) #map aplica uma função a todos os itens, no caso, transforma tudo em inteiro e faz o split usando o : como separador
+    horas, minutos = map(int, hora.split(":")) #map aplica uma função a todos os itens, transforma tudo em inteiro e faz o split usando o : como separador
 
     if not (0 <= horas <= 23 and 0 <= minutos <= 59):
         raise ValueError("Horário inválido")
